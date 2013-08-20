@@ -1,0 +1,21 @@
+{
+    "name": "colorjs",
+    "version": "0.0.1",
+    "description": "Color utility",
+    "author": "Matt Zabriskie",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mzabriskie/colorjs.git"
+    },
+    "scripts": {
+        "test": "grunt jshint nodeunit"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.0",
+        "grunt-contrib-copy": "0.4.1",
+        "grunt-contrib-jshint": "0.4.3",
+        "grunt-contrib-nodeunit": "~0.1.2",
+        "grunt-contrib-uglify": "0.2.2"
+    }
+}
