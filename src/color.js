@@ -1,4 +1,4 @@
-(function (window) {
+(function () {
 
 	/**
      * HTML named colors
@@ -157,7 +157,7 @@
     var REGEXP_RGB = /^rgb\((\d{1,3}),(\d{1,3}),(\d{1,3})\)$/,
 		REGEXP_HSL = /^hsl\((\d{1,3}),(\d{1,3})%,(\d{1,3})%\)$/,
 		REGEXP_HEX = /^#?(\w{1,2})(\w{1,2})(\w{1,2})$/,
-		REGEXP_WHITESPACE = /^\s+|\s+$/g;
+		REGEXP_WHITESPACE = /\s+/g;
 
     /**
      * Trim whitespace from a string value
@@ -554,7 +554,7 @@
 	} else if (typeof module !== 'undefined') {
 		module.exports = Color;
 	} else {
-		window.Color = Color;
+		this.Color = Color;
 	}
 
-})(window);
+}).call(this);
