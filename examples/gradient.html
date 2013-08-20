@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>color.js - Gradient example</title>
+        <style type="text/css">
+            span {
+                float:left;
+                display:block;
+                height:25px;
+                width:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src="../src/color.js"></script>
+        <script>
+            function gradient(color1, color2) {
+                var
+                    c1 = new Color(color1),
+                    c2 = new Color(color2),
+                    c3 = new Color(Color.median(c1, c2)),
+                    e1 = document.createElement('span'),
+                    e2 = document.createElement('span'),
+                    e3 = document.createElement('span');
+
+                e1.style.backgroundColor = c1.toHex();
+                e2.style.backgroundColor = c3.toHex();
+                e3.style.backgroundColor = c2.toHex();
+
+                document.body.appendChild(e1);
+                document.body.appendChild(e2);
+                document.body.appendChild(e3);
+                document.body.appendChild(document.createElement('br'));
+                document.body.appendChild(document.createElement('br'));
+            }
+
+            gradient('blue', 'orange');
+            gradient('#009900', '#ffff00');
+            gradient('rgb(0, 0, 0)', 'rgb(200, 200, 200)');
+            gradient('hsl(0, 0%, 0%)', 'hsl(0, 100%, 50%)');
+
+        </script>
+    </body>
+</html>

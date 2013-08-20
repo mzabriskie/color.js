@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>color.js - Swatch example</title>
+        <style type="text/css">
+            div {
+                float:left;
+            }
+            span {
+                float:left;
+                display:block;
+                height:25px;
+                width:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src="../src/color.js"></script>
+        <script>
+            function colorSwatch(h) {
+                var s, l, c,
+                    ns = 5, nl = 11,
+                    e, b = document.body, d = document.createElement('div');
+
+                b.appendChild(d);
+                d.style.width = (ns * 50) + 'px';
+
+                for (var i=0; i<nl; i++) {
+                    l = Math.floor(100 - ((100/(nl-1)) * i));
+                    for (var j=0; j<ns; j++) {
+                        s = Math.floor(100 - ((100/(ns-1)) * j));
+                        e = document.createElement('span');
+                        d.appendChild(e);
+                        c = new Color('hsl(' + h + ', ' + s + '%, ' + l + '%)');
+                        e.style.backgroundColor = c.toHsl();
+                        e.setAttribute('title', 'rgb: ' + c.toRgb() + "\nhsl: " + c.toHsl() + "\nhex: " + c.toHex());
+                    }
+                }
+            }
+
+            for (var i=0; i<360; i+=10) {
+                colorSwatch(i);
+            }
+        </script>
+    </body>
+</html>
