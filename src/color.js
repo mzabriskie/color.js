@@ -391,7 +391,6 @@
      * @constructor
      */
     function Color(color) {
-		this.color = color;
 		this.channels = Color.normalize(color);
 	}
 
@@ -489,7 +488,7 @@
 	};
 
 	Color.prototype.median = function (color) {
-		return Color.median(this.color, color);
+		return Color.median(this, color);
 	};
 
     /**
