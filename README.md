@@ -1,4 +1,4 @@
-color.js
+color.js [![Build Status](https://travis-ci.org/mzabriskie/color.js.png?branch=master)](https://travis-ci.org/mzabriskie/color.js)
 ========
 
 Color utility for JavaScript
@@ -19,6 +19,8 @@ Color.median('white', 'black'); // returns '#7f7f7f'
 Color.median('#009900', '#ffff00'); // returns '#7fbf00'
 ```
 
+More detailed usages are available under <code>examples/</code>.
+
 ## API
 
 __Instance methods__
@@ -29,6 +31,10 @@ __Instance methods__
 
 __Static methods__
 
+* isHex(color) - Determine if a color is represented using HEX
+* isHsl(color) - Determine if a color is represented using HSL
+* isRgb(color) - Determine if a color is represented using RGB
+* isKeyword(color) - Determine if a color is represented using HTML keyword
 * median(color1, color2) - Get the median value of two colors
 * normalize(color) - Take any valid color format and get the RGB values
 * parse(color) - Parse any valid color and extract it's raw values
