@@ -487,6 +487,10 @@
 		return med;
 	};
 
+	Color.prototype.median = function (color) {
+		return Color.median(this, color);
+	};
+
     /**
      * Normalize a color value represented as either HEX, HSL, RGB, HTML named color or a Color instance
      *

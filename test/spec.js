@@ -55,6 +55,9 @@ module.exports = {
         test.equal(Color.median('yellow', 'green'), '#7fbf00', 'Median of yellow and green');
         test.equal(Color.median('foo', 'bar'), null, 'Median of foo and bar');
 
+        var c = new Color('white');
+        test.equal(c.median('black'), '#7f7f7f', 'Median prototype method uses color of instance');
+
         test.done();
     },
 
