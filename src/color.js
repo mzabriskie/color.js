@@ -356,6 +356,8 @@
 		this.channels = Color.normalize(color);
 	}
 
+    Color.version = '0.1.3';
+
     /**
      * Convert this Color to an RGB value
      *
