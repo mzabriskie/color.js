@@ -168,44 +168,6 @@
 		return str ? String(str).replace(REGEXP_WHITESPACE, '') : '';
 	}
 
-	/* -- Color validation -- */
-
-    /**
-     * Determine if a color is represented using RGB
-     * @param {String} color The color to be tested
-     * @returns {boolean} True if the color is RGB, otherwise false
-     */
-	function isRgb(color) {
-		return rgbToArray(color) !== null;
-	}
-
-    /**
-     * Determine if a color is represented using HSL
-     * @param {String} color The color to be tested
-     * @returns {boolean} True if the color is HSL, otherwise false
-     */
-    function isHsl(color) {
-		return hslToArray(color) !== null;
-	}
-
-    /**
-     * Determine if a color is represented using HEX
-     * @param {String} color The color to be tested
-     * @returns {boolean} True if the color is HEX, otherwise false
-     */
-    function isHex(color) {
-		return hexToArray(color) !== null;
-	}
-
-    /**
-     * Determine if a color is represented using HTML keyword
-     * @param {String} color The color to be tested
-     * @returns {boolean} True if the color is HTML keyword, otherwise false
-     */
-    function isKeyword(color) {
-		return COLOR_TABLE.hasOwnProperty(color.toLowerCase());
-	}
-
 	/* -- Color to Array conversions -- */
 
     /**
@@ -463,6 +425,42 @@
 	};
 
     /* -- Color class static methods -- */
+
+    /**
+     * Determine if a color is represented using RGB
+     * @param {String} color The color to be tested
+     * @returns {boolean} True if the color is RGB, otherwise false
+     */
+    var isRgb = Color.isRgb = function (color) {
+        return rgbToArray(color) !== null;
+    };
+
+    /**
+     * Determine if a color is represented using HSL
+     * @param {String} color The color to be tested
+     * @returns {boolean} True if the color is HSL, otherwise false
+     */
+    var isHsl = Color.isHsl = function (color) {
+        return hslToArray(color) !== null;
+    };
+
+    /**
+     * Determine if a color is represented using HEX
+     * @param {String} color The color to be tested
+     * @returns {boolean} True if the color is HEX, otherwise false
+     */
+    var isHex = Color.isHex = function (color) {
+        return hexToArray(color) !== null;
+    };
+
+    /**
+     * Determine if a color is represented using HTML keyword
+     * @param {String} color The color to be tested
+     * @returns {boolean} True if the color is HTML keyword, otherwise false
+     */
+    var isKeyword = Color.isKeyword = function (color) {
+        return COLOR_TABLE.hasOwnProperty(color.toLowerCase());
+    };
 
     /**
      * Get the median value of two colors
