@@ -37,7 +37,6 @@ __Static methods__
 * isRgb(color) - Determine if a color is represented using RGB
 * isKeyword(color) - Determine if a color is represented using HTML keyword
 * median(color1, color2) - Get the median value of two colors
-* normalize(color) - Take any valid color format and get a Color instance
 * parse(color) - Parse any valid color and extract it's raw values
 
 ## License
