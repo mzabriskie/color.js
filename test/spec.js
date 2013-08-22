@@ -61,16 +61,6 @@ module.exports = {
         test.done();
     },
 
-    testNormalize: function (test) {
-        test.deepEqual(Color.normalize('red').toHex(), '#ff0000', 'Normalize red');
-        test.deepEqual(Color.normalize('#ff0000').toHex(), '#ff0000', 'Normalize #ff0000');
-        test.deepEqual(Color.normalize('hsl(0, 100%, 50%)').toHex(), '#ff0000', 'Normalize hsl(0, 100%, 50%)');
-        test.deepEqual(Color.normalize('rgb(255, 0, 0)').toHex(), '#ff0000', 'Normalize rgb(255, 0, 0)');
-        test.deepEqual(Color.normalize('foo'), null, 'Normalize foo');
-
-        test.done();
-    },
-
     testParse: function (test) {
         test.deepEqual(Color.parse('#ff0000'), ['ff', '00', '00'], 'Parsing hex');
         test.deepEqual(Color.parse('hsl(0, 100%, 50%)'), ['0', '100', '50'], 'Parsing hsl');

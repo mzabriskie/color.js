@@ -399,7 +399,7 @@
 		this.channels = extractRgbChannels(color);
 	}
 
-    Color.version = '0.1.5';
+    Color.version = '0.1.6';
 
     /**
      * Convert this Color to an RGB value
@@ -538,24 +538,6 @@
 		}
 
 		return med;
-	};
-
-    /**
-     * Normalize a color value represented as either HEX, HSL, RGB, HTML named color or a Color instance
-     *
-     * @param {String|Color} color The color to be normalized
-     * @returns {Color} If the color provided is valid a Color instance, otherwise null
-     */
-    Color.normalize = function (color) {
-		var channels = extractRgbChannels(color),
-            result = null;
-
-        if (channels !== null) {
-            result = new Color(null);
-            result.channels = channels;
-        }
-
-		return result;
 	};
 
     /**
