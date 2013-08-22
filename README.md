@@ -28,6 +28,7 @@ __Instance methods__
 * toHex - Get the HEX value of the Color instance
 * toHsl - Get the HSL value of the Color instance
 * toRgb - Get the RGB value of the Color instance
+* median(color) - Get the median value of the Color instance and another color
 
 __Static methods__
 
@@ -36,7 +37,7 @@ __Static methods__
 * isRgb(color) - Determine if a color is represented using RGB
 * isKeyword(color) - Determine if a color is represented using HTML keyword
 * median(color1, color2) - Get the median value of two colors
-* normalize(color) - Take any valid color format and get the RGB values
+* normalize(color) - Take any valid color format and get a Color instance
 * parse(color) - Parse any valid color and extract it's raw values
 
 ## License
