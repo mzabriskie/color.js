@@ -168,6 +168,49 @@
 		return str ? String(str).replace(REGEXP_WHITESPACE, '') : '';
 	}
 
+    /**
+     * Normalize a color value represented as either HEX, HSL, RGB, HTML named color or a Color instance
+     *
+     * @param {String|Color} color The color to be normalized
+     * @returns {Array} If the color provided is valid the color represented as an array of RGB values, otherwise null
+     */
+    function extractRgbChannels(color) {
+        var hex = null;
+
+        // Short circuit if null was provided
+        if (color === null) {
+            return hex;
+        }
+
+        // Already dealing with a Color
+        if (color instanceof Color) {
+            hex = color.toHex();
+        }
+        // Convert keyword to HEX
+        else if (isKeyword(color)) {
+            hex = keyToHex(color);
+        }
+        // Convert RGB to HEX
+        else if (isRgb(color)) {
+            hex = rgbToHex(color);
+        }
+        // Convert HSL to HEX
+        else if (isHsl(color)) {
+            hex = hslToHex(color);
+        }
+        // Default to HEX
+        else if (isHex(color)) {
+            hex = color;
+        }
+
+        // Normalize HEX
+        if (hex !== null) {
+            hex = '#' + hexToArray(hex).join('');
+        }
+
+        return hexToRgb(hex, true);
+    }
+
 	/* -- Color to Array conversions -- */
 
     /**
@@ -353,10 +396,10 @@
      * @constructor
      */
     function Color(color) {
-		this.channels = Color.normalize(color);
+		this.channels = extractRgbChannels(color);
 	}
 
-    Color.version = '0.1.3';
+    Color.version = '0.1.5';
 
     /**
      * Convert this Color to an RGB value
@@ -426,6 +469,16 @@
 		return '#' + hex.join('');
 	};
 
+    /**
+     * Get the median value of two colors
+     *
+     * @param {String|Color} color
+     * @returns {String} The median value in HEX of the this Color instance and the color provided
+     */
+    Color.prototype.median = function (color) {
+        return Color.median(this, color);
+    };
+
     /* -- Color class static methods -- */
 
     /**
@@ -473,8 +526,8 @@
      */
     Color.median = function (color1, color2) {
 		var med = null,
-			rgb1 = Color.normalize(color1),
-			rgb2 = Color.normalize(color2);
+			rgb1 = extractRgbChannels(color1),
+			rgb2 = extractRgbChannels(color2);
 
 		if (rgb1 !== null && rgb2 !== null) {
 			var r = Math.floor((rgb1[0] + rgb2[0]) / 2),
@@ -487,46 +540,22 @@
 		return med;
 	};
 
-	Color.prototype.median = function (color) {
-		return Color.median(this, color);
-	};
-
     /**
      * Normalize a color value represented as either HEX, HSL, RGB, HTML named color or a Color instance
      *
      * @param {String|Color} color The color to be normalized
-     * @returns {Array} If the color provided is valid the color represented as an array of RGB values, otherwise null
+     * @returns {Color} If the color provided is valid a Color instance, otherwise null
      */
     Color.normalize = function (color) {
-		var hex = null;
+		var channels = extractRgbChannels(color),
+            result = null;
 
-		// Already dealing with a Color
-		if (color instanceof Color) {
-			hex = color.toHex();
-		}
-		// Convert keyword to HEX
-		else if (isKeyword(color)) {
-			hex = keyToHex(color);
-		}
-		// Convert RGB to HEX
-		else if (isRgb(color)) {
-			hex = rgbToHex(color);
-		}
-		// Convert HSL to HEX
-		else if (isHsl(color)) {
-			hex = hslToHex(color);
-		}
-		// Default to HEX
-		else if (isHex(color)) {
-			hex = color;
-		}
+        if (channels !== null) {
+            result = new Color(null);
+            result.channels = channels;
+        }
 
-		// Normalize HEX
-		if (hex !== null) {
-			hex = '#' + hexToArray(hex).join('');
-		}
-
-		return hexToRgb(hex, true);
+		return result;
 	};
 
     /**
