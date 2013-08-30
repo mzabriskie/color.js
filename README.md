@@ -23,21 +23,43 @@ More detailed usages are available under <code>examples/</code>.
 
 ## API
 
-__Instance methods__
+###Instance methods###
 
-* toHex - Get the HEX value of the Color instance
-* toHsl - Get the HSL value of the Color instance
-* toRgb - Get the RGB value of the Color instance
-* median(color) - Get the median value of the Color instance and another color
+===
 
-__Static methods__
+#### toHex()
+Get the HEX value of the Color instance
 
-* isHex(color) - Determine if a color is represented using HEX
-* isHsl(color) - Determine if a color is represented using HSL
-* isRgb(color) - Determine if a color is represented using RGB
-* isKeyword(color) - Determine if a color is represented using HTML keyword
-* median(color1, color2) - Get the median value of two colors
-* parse(color) - Parse any valid color and extract it's raw values
+#### toHsl()
+Get the HSL value of the Color instance
+
+#### toRgb()
+Get the RGB value of the Color instance
+
+#### median(color)
+Get the median value of the Color instance and another color
+
+###Static methods###
+
+===
+
+#### isHex(color)
+Determine if a color is represented using HEX
+
+#### isHsl(color)
+Determine if a color is represented using HSL
+
+#### isRgb(color)
+Determine if a color is represented using RGB
+
+#### isKeyword(color)
+Determine if a color is represented using HTML keyword
+
+#### median(color1, color2)
+Get the median value of two colors
+
+#### parse(color)
+Parse any valid color and extract it's raw values
 
 ## License
 
