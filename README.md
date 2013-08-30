@@ -25,8 +25,6 @@ More detailed usages are available under <code>examples/</code>.
 
 ###Instance methods###
 
-===
-
 #### toHex()
 Get the HEX value of the Color instance
 
@@ -40,8 +38,6 @@ Get the RGB value of the Color instance
 Get the median value of the Color instance and another color
 
 ###Static methods###
-
-===
 
 #### isHex(color)
 Determine if a color is represented using HEX
