@@ -19,6 +19,29 @@ util.trim = function(str) {
 };
 
 /**
+ * Inherit the prototype from one object to another
+ *
+ * @param {Function} child The class that will have it's prototype changed
+ * @param {Function} parent The class that prototype will be inherited
+ * @returns {Function} The child class
+ */
+util.inherits = function inherits(child, parent) {
+	for (var k in parent) {
+		if (parent.hasOwnProperty(k)) {
+			child[k] = parent[k];
+		}
+	}
+
+	function ctor() {
+		this.constructor = child;
+	}
+
+	ctor.prototype = parent.prototype;
+	child.prototype = new ctor();
+	return child;
+};
+
+/**
  * Normalize a color value represented as either HEX, HSL, RGB, HTML named color or a Color instance
  *
  * @param {String|Color} color The color to be normalized
