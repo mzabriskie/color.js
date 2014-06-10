@@ -261,7 +261,7 @@ util.hueToRgb = function(m1, m2, hue) {
  */
 util.hslToHex = function(hsl, array) {
 	var tmp = util.hslToArray(hsl);
-	if (tmp == null) {
+	if (tmp === null) {
 		return null;
 	}
 
