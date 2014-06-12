@@ -9,8 +9,19 @@ module.exports = function (Color) {
  * @constructor
  */
 function Hsl(value, channels) {
-	this.value = value;
-	this.channels = channels;
+	if (typeof value === 'object' && value.constructor === Array &&
+		typeof channels === 'object' && channels.constructor === Array) {
+		this.value = value;
+		this.channels = channels;
+	}
+	else if (arguments.length === 1 && util.isHsl(value)) {
+		this.value = util.hslToArray(value);
+		this.channels = this.value;
+	}
+	else if (arguments.length === 3) {
+		this.value = [parseInt(arguments[0], 10), parseInt(arguments[1], 10), parseInt(arguments[2], 10)];
+		this.channels = this.value;
+	}
 }
 
 util.inherits(Hsl, Color);

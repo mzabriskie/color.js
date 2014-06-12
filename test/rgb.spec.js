@@ -3,6 +3,9 @@ var Color = require('../src/color');
 module.exports = {
 	testConstructor: function (test) {
 		test.ok(new Color.Rgb instanceof Color);
+		test.equal(new Color.Rgb('rgb(255, 0, 0)'), 'rgb(255, 0, 0)');
+		test.equal(new Color.Rgb('255', '0', '0'), 'rgb(255, 0, 0)');
+		test.equal(new Color.Rgb(255, 0, 0), 'rgb(255, 0, 0)');
 
 		test.done();
 	},

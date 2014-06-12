@@ -9,8 +9,19 @@ module.exports = function (Color) {
  * @constructor
  */
 function Rgb(value, channels) {
-	this.value = value;
-	this.channels = channels;
+	if (typeof value === 'object' && value.constructor === Array &&
+		typeof channels === 'object' && channels.constructor === Array) {
+		this.value = value;
+		this.channels = channels;
+	}
+	else if (arguments.length === 1 && util.isRgb(value)) {
+		this.value = util.rgbToArray(value);
+		this.channels = this.value;
+	}
+	else if (arguments.length === 3) {
+		this.value = [arguments[0], arguments[1], arguments[2]];
+		this.channels = this.value;
+	}
 }
 
 util.inherits(Rgb, Color);

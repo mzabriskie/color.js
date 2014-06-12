@@ -3,6 +3,9 @@ var Color = require('../src/color');
 module.exports = {
 	testConstructor: function (test) {
 		test.ok(new Color.Hex instanceof Color);
+		test.equal(new Color.Hex('#ff0000'), '#ff0000');
+		test.equal(new Color.Hex('#f00'), '#ff0000');
+		test.equal(new Color.Hex('ff', '00', '00'), '#ff0000');
 
 		test.done();
 	},

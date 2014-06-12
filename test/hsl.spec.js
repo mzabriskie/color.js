@@ -3,6 +3,9 @@ var Color = require('../src/color');
 module.exports = {
 	testConstructor: function (test) {
 		test.ok(new Color.Hsl instanceof Color);
+		test.equal(new Color.Hsl('hsl(0, 100%, 50%)'), 'hsl(0, 100%, 50%)');
+		test.equal(new Color.Hsl('0', '100%', '50%'), 'hsl(0, 100%, 50%)');
+		test.equal(new Color.Hsl(0, 100, 50), 'hsl(0, 100%, 50%)');
 
 		test.done();
 	},
