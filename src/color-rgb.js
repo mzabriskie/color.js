@@ -1,8 +1,15 @@
 var Color = require('./color'),
 	util = require('./color-util');
 
-Color.Rgb = function (value) {
+/**
+ * Constructs a RGB subclass of Color using the value provided
+ *
+ * @param value
+ * @constructor
+ */
+Color.Rgb = function (value, channels) {
 	this.value = value;
+	this.channels = channels;
 };
 
 util.inherits(Color.Rgb, Color);
@@ -33,7 +40,7 @@ Color.Rgb.prototype.toString = function () {
  * @returns {String} RGB value of this Color
  */
 Color.prototype.toRgb = function () {
-	return new Color.Rgb(util.parse(util.channelsToRgbString(this.channels)));
+	return new Color.Rgb(util.parse(util.channelsToRgbString(this.channels)), this.channels);
 };
 
 module.exports = Color.Rgb;

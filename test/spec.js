@@ -19,6 +19,20 @@ module.exports = {
 		test.ok(new Color('red').toHsl() instanceof Color.Hsl);
 		test.ok(new Color('red').toRgb() instanceof Color.Rgb);
 
+		test.ok(new Color('red').toHex().toHsl() instanceof Color.Hsl);
+		test.ok(new Color('red').toHex().toRgb() instanceof Color.Rgb);
+
+		test.ok(new Color('red').toHsl().toHex() instanceof Color.Hex);
+		test.ok(new Color('red').toHsl().toRgb() instanceof Color.Rgb);
+
+		test.ok(new Color('red').toRgb().toHsl() instanceof Color.Hsl);
+		test.ok(new Color('red').toRgb().toHex() instanceof Color.Hex);
+
+
+		test.ok(new Color('red').toHex().toHsl().toRgb() instanceof Color.Rgb);
+		test.ok(new Color('red').toHsl().toRgb().toHex() instanceof Color.Hex);
+		test.ok(new Color('red').toRgb().toHex().toHsl() instanceof Color.Hsl);
+
 		test.done();
 	},
 

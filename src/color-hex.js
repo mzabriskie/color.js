@@ -7,8 +7,9 @@ var Color = require('./color'),
  * @param value
  * @constructor
  */
-Color.Hex = function (value) {
+Color.Hex = function (value, channels) {
 	this.value = value;
+	this.channels = channels;
 };
 
 util.inherits(Color.Hex, Color);
@@ -38,7 +39,7 @@ Color.Hex.prototype.toString = function () {
  * @returns {String} HEX value of this Color
  */
 Color.prototype.toHex = function () {
-	return new Color.Hex(util.parse(util.channelsToHexString(this.channels)));
+	return new Color.Hex(util.parse(util.channelsToHexString(this.channels)), this.channels);
 };
 
 module.exports = Color.Hex;
