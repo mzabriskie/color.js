@@ -29,14 +29,14 @@ util.inherits(Hsl, Color);
 /**
  * Returns the individual channels as an array
  *
- * @returns {Array} HSL channels
+ * @returns {Array} HSL value
  */
 Hsl.prototype.toArray = function () {
 	return this.value;
 };
 
 /**
- * Returns the HSL channels to a HSL formatted string
+ * Returns the HSL value to a HSL formatted string
  *
  * @returns {String} HSL value formatted as a string
  */

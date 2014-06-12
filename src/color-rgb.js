@@ -29,14 +29,14 @@ util.inherits(Rgb, Color);
 /**
  * Returns the individual channels as an array
  *
- * @returns {Array} RGB channels
+ * @returns {Array} RGB value
  */
 Rgb.prototype.toArray = function () {
 	return this.value;
 };
 
 /**
- * Returns the RGB channels to a RGB formatted string
+ * Returns the RGB value to a RGB formatted string
  *
  * @returns {String} RGB value formatted as a string
  */
