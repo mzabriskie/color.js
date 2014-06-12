@@ -1,4 +1,7 @@
 var Color = require('../src/color');
+	Color.Hex = require('../src/color-hex');
+	Color.Hsl = require('../src/color-hsl');
+	Color.Rgb = require('../src/color-rgb');
 
 module.exports = {
     testConstructor: function (test) {
@@ -12,10 +15,9 @@ module.exports = {
     },
 
 	testConversion: function (test) {
-        var c = new Color('red');
-		test.equal(c.toHex(), '#ff0000', 'Converting color to hex');
-		test.equal(c.toHsl(), 'hsl(0, 100%, 50%)', 'Converting color to hsl');
-		test.equal(c.toRgb(), 'rgb(255, 0, 0)', 'Converting color to rgb');
+		test.ok(new Color('red').toHex() instanceof Color.Hex);
+		test.ok(new Color('red').toHsl() instanceof Color.Hsl);
+		test.ok(new Color('red').toRgb() instanceof Color.Rgb);
 
 		test.done();
 	},

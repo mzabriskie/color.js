@@ -11,33 +11,6 @@ function Color(color) {
 }
 
 /**
- * Convert this Color to an RGB value
- *
- * @returns {String} RGB value of this Color
- */
-Color.prototype.toRgb = function () {
-	return util.channelsToRgbString(this.channels);
-};
-
-/**
- * Convert this Color to a HSL value
- *
- * @returns {String} HSL value of this Color
- */
-Color.prototype.toHsl = function () {
-	return util.channelsToHslString(this.channels);
-};
-
-/**
- * Convert this Color to a HEX value
- *
- * @returns {String} HEX value of this Color
- */
-Color.prototype.toHex = function () {
-	return util.channelsToHexString(this.channels);
-};
-
-/**
  * Get the median value of two colors
  *
  * @param {String|Color} color
@@ -47,6 +20,7 @@ Color.prototype.median = function (color) {
 	return Color.median(this, color);
 };
 
+// Static methods
 Color.isRgb = util.isRgb;
 Color.isHsl = util.isHsl;
 Color.isHex = util.isHex;
