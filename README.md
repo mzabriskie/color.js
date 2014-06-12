@@ -8,8 +8,9 @@ Color utility for JavaScript
 Transform color formats
 
 ```javascript
-new Color('red').toHsl() // returns 'hsl(0, 100%, 50%)'
-new Color('#ff0000').toRgb(); // returns 'rgb(255, 0, 0)'
+console.log(new Color('red').toHsl()); // hsl(0, 100%, 50%)
+console.log(new Color('#ff0000').toRgb(); // rgb(255, 0, 0)
+console.log(new Color('rgb(255, 0, 0)').toHex()); // #ff0000
 ```
 
 Median value of two colors
@@ -23,39 +24,38 @@ More detailed usages are available under <code>examples/</code>.
 
 ## API
 
-###Instance methods###
+#### Color(color)
+Create a new `Color` instance
 
-#### toHex()
-Get the HEX value of the Color instance
+#### Color.prototype.toHex()
+Get a `Color.Hex` instance of the color
 
-#### toHsl()
-Get the HSL value of the Color instance
+#### Color.prototype.toHsl()
+Get a `Color.Hsl` instance of the color
 
-#### toRgb()
-Get the RGB value of the Color instance
+#### Color.prototype.toRgb()
+Get a `Color.Rgb` instance of the color
 
-#### median(color)
-Get the median value of the Color instance and another color
+#### Color.prototype.median(color)
+Get the median value of the `Color` instance and another color
 
-###Static methods###
-
-#### isHex(color)
+#### Color.isHex(color)
 Determine if a color is represented using HEX
 
-#### isHsl(color)
+#### Color.isHsl(color)
 Determine if a color is represented using HSL
 
-#### isRgb(color)
+#### Color.isRgb(color)
 Determine if a color is represented using RGB
 
-#### isKeyword(color)
+#### Color.isKeyword(color)
 Determine if a color is represented using HTML keyword
 
-#### median(color1, color2)
+#### Color.median(color1, color2)
 Get the median value of two colors
 
-#### parse(color)
-Parse any valid color and extract it's raw values
+#### Color.parse(color)
+Parse any valid color to an `Array` of RGB channels
 
 ## License
 

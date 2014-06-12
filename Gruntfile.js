@@ -1,34 +1,45 @@
 /*global module:false*/
 module.exports = function(grunt) {
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.initConfig({
         jshint: {
-            all: ['Gruntfile.js', 'src/color.js']
+            all: ['Gruntfile.js', 'src/**/*.js']
         },
         nodeunit: {
             all: ['test/*.js']
         },
         uglify: {
-            main: {
+            dist: {
                 files: {
-                    'dist/color.min.js': ['src/color.js']
+                    'dist/color.min.js': ['dist/color.js']
                 }
             }
         },
-        copy: {
+        browserify: {
             dist: {
-                files: [
-                    {src: 'src/color.js', dest: 'dist/', expand: true, flatten: true}
-                ]
+				src: ['src/color.js'],
+                dest: 'dist/color.js',
+				options: {
+					bundleOptions: {
+						standalone: 'Color'
+					}
+				}
             }
-        }
+        },
+		watch: {
+			test: {
+				files: ['src/*.js', 'test/**/*.js'],
+				tasks: ['test']
+			}
+		}
     });
 
     grunt.registerTask('test', ['jshint', 'nodeunit']);
     grunt.registerTask('default', ['test', 'publish']);
-    grunt.registerTask('publish', ['uglify', 'copy:dist']);
+    grunt.registerTask('publish', ['browserify:dist', 'uglify:dist']);
 };

@@ -12,10 +12,23 @@ module.exports = {
     },
 
 	testConversion: function (test) {
-        var c = new Color('red');
-		test.equal(c.toHex(), '#ff0000', 'Converting color to hex');
-		test.equal(c.toHsl(), 'hsl(0, 100%, 50%)', 'Converting color to hsl');
-		test.equal(c.toRgb(), 'rgb(255, 0, 0)', 'Converting color to rgb');
+		test.ok(new Color('red').toHex() instanceof Color.Hex);
+		test.ok(new Color('red').toHsl() instanceof Color.Hsl);
+		test.ok(new Color('red').toRgb() instanceof Color.Rgb);
+
+		test.ok(new Color('red').toHex().toHsl() instanceof Color.Hsl);
+		test.ok(new Color('red').toHex().toRgb() instanceof Color.Rgb);
+
+		test.ok(new Color('red').toHsl().toHex() instanceof Color.Hex);
+		test.ok(new Color('red').toHsl().toRgb() instanceof Color.Rgb);
+
+		test.ok(new Color('red').toRgb().toHsl() instanceof Color.Hsl);
+		test.ok(new Color('red').toRgb().toHex() instanceof Color.Hex);
+
+
+		test.ok(new Color('red').toHex().toHsl().toRgb() instanceof Color.Rgb);
+		test.ok(new Color('red').toHsl().toRgb().toHex() instanceof Color.Hex);
+		test.ok(new Color('red').toRgb().toHex().toHsl() instanceof Color.Hsl);
 
 		test.done();
 	},
@@ -62,8 +75,8 @@ module.exports = {
     },
 
     testParse: function (test) {
-        test.deepEqual(Color.parse('#ff0000'), ['ff', '00', '00'], 'Parsing hex');
-        test.deepEqual(Color.parse('hsl(0, 100%, 50%)'), ['0', '100', '50'], 'Parsing hsl');
+        test.deepEqual(Color.parse('#ff0000'), ['255', '0', '0'], 'Parsing hex');
+        test.deepEqual(Color.parse('hsl(0, 100%, 50%)'), ['255', '0', '0'], 'Parsing hsl');
         test.deepEqual(Color.parse('rgb(255, 0, 0)'), ['255', '0', '0'], 'Parsing rgb');
         test.deepEqual(Color.parse('foo'), null, 'Parsing foo');
 
