@@ -40,7 +40,7 @@ Color.Rgb.prototype.toString = function () {
  * @returns {String} RGB value of this Color
  */
 Color.prototype.toRgb = function () {
-	return new Color.Rgb(util.parse(util.channelsToRgbString(this.channels)), this.channels);
+	return new Color.Rgb(util.rgbToArray(util.channelsToRgbString(this.channels)), this.channels);
 };
 
 module.exports = Color.Rgb;

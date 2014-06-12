@@ -42,12 +42,12 @@ util.inherits = function inherits(child, parent) {
 };
 
 /**
- * Normalize a color value represented as either HEX, HSL, RGB, HTML named color or a Color instance
+ * Parse a color value represented as either HEX, HSL, RGB, HTML named color or a Color instance
  *
- * @param {String|Color} color The color to be normalized
+ * @param {String|Color} color The color to be parsed
  * @returns {Array} If the color provided is valid the color represented as an array of RGB values, otherwise null
  */
-util.extractRgbChannels = function(color) {
+util.parse = function(color) {
 	var hex = null;
 
 	// Short circuit if null was provided
@@ -375,8 +375,8 @@ util.isKeyword = function (color) {
  */
 util.median = function (color1, color2) {
 	var med = null,
-		rgb1 = util.extractRgbChannels(color1),
-		rgb2 = util.extractRgbChannels(color2);
+		rgb1 = util.parse(color1),
+		rgb2 = util.parse(color2);
 
 	if (rgb1 !== null && rgb2 !== null) {
 		var r = Math.floor((rgb1[0] + rgb2[0]) / 2),
@@ -387,28 +387,6 @@ util.median = function (color1, color2) {
 	}
 
 	return med;
-};
-
-/**
- * Parse a color value represented as either HEX, HSL or RGB
- *
- * @param {String} color The color to be parsed
- * @returns {Array} If the color provided is valid the color broken down to it's raw values, otherwise null
- */
-util.parse = function (color) {
-	var parsed = null;
-
-	if (util.isRgb(color)) {
-		parsed = util.rgbToArray(color);
-	}
-	else if (util.isHsl(color)) {
-		parsed = util.hslToArray(color);
-	}
-	else if (util.isHex(color)) {
-		parsed = util.hexToArray(color);
-	}
-
-	return parsed;
 };
 
 module.exports = util;

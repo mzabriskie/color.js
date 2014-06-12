@@ -40,7 +40,7 @@ Color.Hsl.prototype.toString = function () {
  * @returns {String} HSL value of this Color
  */
 Color.prototype.toHsl = function () {
-	return new Color.Hsl(util.parse(util.channelsToHslString(this.channels)), this.channels);
+	return new Color.Hsl(util.hslToArray(util.channelsToHslString(this.channels)), this.channels);
 };
 
 module.exports = Color.Hsl;

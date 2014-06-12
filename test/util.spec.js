@@ -8,13 +8,13 @@ module.exports = {
 		test.done();
 	},
 
-	testExtractRgbChannels: function (test) {
-		test.equal(util.extractRgbChannels(null), null);
-		test.deepEqual(util.extractRgbChannels({toHex: function () { return '#f00'; }}), [255, 0, 0]);
-		test.deepEqual(util.extractRgbChannels('red'), [255, 0, 0]);
-		test.deepEqual(util.extractRgbChannels('rgb(255, 0, 0)'), [255, 0, 0]);
-		test.deepEqual(util.extractRgbChannels('hsl(0, 100%, 50%)'), [255, 0, 0]);
-		test.deepEqual(util.extractRgbChannels('#f00'), [255, 0, 0]);
+	testParse: function (test) {
+		test.equal(util.parse(null), null);
+		test.deepEqual(util.parse({toHex: function () { return '#f00'; }}), [255, 0, 0]);
+		test.deepEqual(util.parse('red'), [255, 0, 0]);
+		test.deepEqual(util.parse('rgb(255, 0, 0)'), [255, 0, 0]);
+		test.deepEqual(util.parse('hsl(0, 100%, 50%)'), [255, 0, 0]);
+		test.deepEqual(util.parse('#f00'), [255, 0, 0]);
 
 		test.done();
 	},
@@ -138,14 +138,6 @@ module.exports = {
 		test.equal(util.median('black', 'white'), '#7f7f7f');
 		test.equal(util.median('red', 'blue'), '#7f007f');
 		test.equal(util.median('purple', 'green'), '#404040');
-
-		test.done();
-	},
-
-	testParse: function (test) {
-		test.deepEqual(util.parse('#ff0000'), ['ff', '00', '00']);
-		test.deepEqual(util.parse('hsl(0, 100%, 50%)'), [0, 100, 50]);
-		test.deepEqual(util.parse('rgb(255, 0, 0)'), [255, 0, 0]);
 
 		test.done();
 	}

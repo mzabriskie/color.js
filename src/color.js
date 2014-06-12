@@ -7,7 +7,7 @@ var util = require('./color-util');
  * @constructor
  */
 function Color(color) {
-	this.channels = util.extractRgbChannels(color);
+	this.channels = Color.parse(color);
 }
 
 /**
