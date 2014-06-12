@@ -1,7 +1,4 @@
 var Color = require('../src/color');
-	Color.Hex = require('../src/color-hex');
-	Color.Hsl = require('../src/color-hsl');
-	Color.Rgb = require('../src/color-rgb');
 
 module.exports = {
     testConstructor: function (test) {

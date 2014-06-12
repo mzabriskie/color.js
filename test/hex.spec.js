@@ -1,9 +1,8 @@
-var Color = require('../src/color'),
-	HexColor = require('../src/color-hex');
+var Color = require('../src/color');
 
 module.exports = {
 	testConstructor: function (test) {
-		test.ok(new HexColor instanceof Color);
+		test.ok(new Color.Hex instanceof Color);
 
 		test.done();
 	},

@@ -1,5 +1,6 @@
-var Color = require('./color'),
-	util = require('./color-util');
+var util = require('./color-util');
+
+module.exports = function (Color) {
 
 /**
  * Constructs a HSL subclass of Color using the value provided
@@ -7,19 +8,19 @@ var Color = require('./color'),
  * @param value
  * @constructor
  */
-Color.Hsl = function (value, channels) {
+function Hsl(value, channels) {
 	this.value = value;
 	this.channels = channels;
-};
+}
 
-util.inherits(Color.Hsl, Color);
+util.inherits(Hsl, Color);
 
 /**
  * Returns the individual channels as an array
  *
  * @returns {Array} HSL channels
  */
-Color.Hsl.prototype.toArray = function () {
+Hsl.prototype.toArray = function () {
 	return this.value;
 };
 
@@ -28,19 +29,12 @@ Color.Hsl.prototype.toArray = function () {
  *
  * @returns {String} HSL value formatted as a string
  */
-Color.Hsl.prototype.toString = function () {
+Hsl.prototype.toString = function () {
 	return 'hsl(' + this.value[0] + ', ' +
 					this.value[1] + '%, ' +
 					this.value[2] + '%)';
 };
 
-/**
- * Convert this Color to a HSL value
- *
- * @returns {String} HSL value of this Color
- */
-Color.prototype.toHsl = function () {
-	return new Color.Hsl(util.hslToArray(util.formatHsl(this.channels)), this.channels);
-};
+return Hsl;
 
-module.exports = Color.Hsl;
+};

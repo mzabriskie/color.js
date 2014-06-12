@@ -1,5 +1,6 @@
-var Color = require('./color'),
-	util = require('./color-util');
+var util = require('./color-util');
+
+module.exports = function (Color) {
 
 /**
  * Constructs a HEX subclass of Color using the value provided
@@ -7,20 +8,19 @@ var Color = require('./color'),
  * @param value
  * @constructor
  */
-Color.Hex = function (value, channels) {
+function Hex(value, channels) {
 	this.value = value;
 	this.channels = channels;
-};
+}
 
-util.inherits(Color.Hex, Color);
-
+util.inherits(Hex, Color);
 
 /**
  * Returns the individual channels as an array
  *
  * @returns {Array} HEX channels
  */
-Color.Hex.prototype.toArray = function () {
+Hex.prototype.toArray = function () {
 	return this.value;
 };
 
@@ -29,17 +29,10 @@ Color.Hex.prototype.toArray = function () {
  *
  * @returns {String} HEX value formatted as a string
  */
-Color.Hex.prototype.toString = function () {
+Hex.prototype.toString = function () {
 	return '#' + this.value.join('');
 };
 
-/**
- * Convert this Color to a HEX value
- *
- * @returns {String} HEX value of this Color
- */
-Color.prototype.toHex = function () {
-	return new Color.Hex(util.hexToArray(util.formatHex(this.channels)), this.channels);
-};
+return Hex;
 
-module.exports = Color.Hex;
+};

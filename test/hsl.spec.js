@@ -1,9 +1,8 @@
-var Color = require('../src/color'),
-	HslColor = require('../src/color-hsl');
+var Color = require('../src/color');
 
 module.exports = {
 	testConstructor: function (test) {
-		test.ok(new HslColor instanceof Color);
+		test.ok(new Color.Hsl instanceof Color);
 
 		test.done();
 	},

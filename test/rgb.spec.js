@@ -1,9 +1,8 @@
-var Color = require('../src/color'),
-	RgbColor = require('../src/color-rgb');
+var Color = require('../src/color');
 
 module.exports = {
 	testConstructor: function (test) {
-		test.ok(new RgbColor instanceof Color);
+		test.ok(new Color.Rgb instanceof Color);
 
 		test.done();
 	},
