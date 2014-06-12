@@ -39,7 +39,7 @@ Color.Hex.prototype.toString = function () {
  * @returns {String} HEX value of this Color
  */
 Color.prototype.toHex = function () {
-	return new Color.Hex(util.hexToArray(util.channelsToHexString(this.channels)), this.channels);
+	return new Color.Hex(util.hexToArray(util.formatHex(this.channels)), this.channels);
 };
 
 module.exports = Color.Hex;

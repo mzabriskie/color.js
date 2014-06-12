@@ -89,7 +89,7 @@ util.parse = function(color) {
  *
  * @returns {String} RGB value of channels
  */
-util.channelsToRgbString = function (channels) {
+util.formatRgb = function (channels) {
 	return 'rgb(' + channels[0] + ', ' + channels[1] + ', ' + channels[2] + ')';
 };
 
@@ -98,7 +98,7 @@ util.channelsToRgbString = function (channels) {
  *
  * @returns {String} HSL value of channels
  */
-util.channelsToHslString = function (channels) {
+util.formatHsl = function (channels) {
 	var r = channels[0] / 255,
 		g = channels[1] / 255,
 		b = channels[2] / 255;
@@ -138,7 +138,7 @@ util.channelsToHslString = function (channels) {
  *
  * @returns {String} HEX value of channels
  */
-util.channelsToHexString = function (channels) {
+util.formatHex = function (channels) {
 	var hex = [
 		(channels[0] - 0).toString(16),
 		(channels[1] - 0).toString(16),
@@ -305,7 +305,7 @@ util.hexToRgb = function(hex, array) {
 			if (value.length == 1) value += value;
 			return parseInt(value, 16);
 		});
-		rgb = (array) ? rgb : util.channelsToRgbString(rgb);
+		rgb = (array) ? rgb : util.formatRgb(rgb);
 	}
 
 	return rgb;

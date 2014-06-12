@@ -19,21 +19,21 @@ module.exports = {
 		test.done();
 	},
 
-	testChannelsToRgbString: function (test) {
-		test.equal(util.channelsToRgbString([255, 0, 0]), 'rgb(255, 0, 0)');
-		test.equal(util.channelsToRgbString([100, 100, 100]), 'rgb(100, 100, 100)');
+	testFormatRgb: function (test) {
+		test.equal(util.formatRgb([255, 0, 0]), 'rgb(255, 0, 0)');
+		test.equal(util.formatRgb([100, 100, 100]), 'rgb(100, 100, 100)');
 
 		test.done();
 	},
 
-	testChannelsToHslString: function (test) {
-		test.equal(util.channelsToHslString([255, 0, 0]), 'hsl(0, 100%, 50%)');
+	testFormatHsl: function (test) {
+		test.equal(util.formatHsl([255, 0, 0]), 'hsl(0, 100%, 50%)');
 
 		test.done();
 	},
 
-	testChannelsToHexString: function (test) {
-		test.equal(util.channelsToHexString([255, 0, 0]), '#ff0000');
+	testFormatHex: function (test) {
+		test.equal(util.formatHex([255, 0, 0]), '#ff0000');
 
 		test.done();
 	},
