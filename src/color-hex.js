@@ -31,7 +31,7 @@ util.inherits(Hex, Color);
  *
  * @returns {Array} HEX value
  */
-Hex.prototype.toArray = function () {
+Hex.prototype.valueOf = function () {
 	return this.value;
 };
 

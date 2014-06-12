@@ -10,8 +10,8 @@ module.exports = {
 		test.done();
 	},
 
-	testToArray: function (test) {
-		test.deepEqual(new Color('#ff0000').toRgb().toArray(), ['255', '0', '0']);
+	testValueOf: function (test) {
+		test.deepEqual(new Color('#ff0000').toRgb().valueOf(), ['255', '0', '0']);
 
 		test.done();
 	},

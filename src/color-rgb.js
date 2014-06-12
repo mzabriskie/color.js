@@ -31,7 +31,7 @@ util.inherits(Rgb, Color);
  *
  * @returns {Array} RGB value
  */
-Rgb.prototype.toArray = function () {
+Rgb.prototype.valueOf = function () {
 	return this.value;
 };
 

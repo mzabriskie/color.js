@@ -10,8 +10,8 @@ module.exports = {
 		test.done();
 	},
 
-	testToArray: function (test) {
-		test.deepEqual(new Color('#ff0000').toHsl().toArray(), ['0', '100', '50']);
+	testValueOf: function (test) {
+		test.deepEqual(new Color('#ff0000').toHsl().valueOf(), ['0', '100', '50']);
 
 		test.done();
 	},

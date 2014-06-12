@@ -10,8 +10,8 @@ module.exports = {
 		test.done();
 	},
 
-	testToArray: function (test) {
-		test.deepEqual(new Color('#ff0000').toHex().toArray(), ['ff', '00', '00']);
+	testValueOf: function (test) {
+		test.deepEqual(new Color('#ff0000').toHex().valueOf(), ['ff', '00', '00']);
 
 		test.done();
 	},

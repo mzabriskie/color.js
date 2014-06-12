@@ -31,7 +31,7 @@ util.inherits(Hsl, Color);
  *
  * @returns {Array} HSL value
  */
-Hsl.prototype.toArray = function () {
+Hsl.prototype.valueOf = function () {
 	return this.value;
 };
 
