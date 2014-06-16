@@ -5,12 +5,23 @@ Color utility for JavaScript
 
 ## Example
 
-Transform color formats
+Parse color formats
 
 ```javascript
-console.log(new Color('red').toHsl()); // hsl(0, 100%, 50%)
-console.log(new Color('#ff0000').toRgb(); // rgb(255, 0, 0)
-console.log(new Color('rgb(255, 0, 0)').toHex()); // #ff0000
+var red		= new Color('red'),
+	yellow	= new Color('hsl(60, 100%, 50%)'),
+	blue	= new Color('#00ffff'),
+	green	= new Color('rgb(0, 128, 0)'),
+	purple	= new Color([128, 0, 128]);
+```
+
+Format colors
+
+```javascript
+var color = new Color('red');
+element.style.backgroundColor = color.toHsl(); // hsl(0, 100%, 50%)
+element.style.backgroundColor = color.toRgb(); // rgb(255, 0, 0)
+element.style.backgroundColor = color.toHex(); // #ff0000
 ```
 
 Median value of two colors
