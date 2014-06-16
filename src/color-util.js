@@ -54,13 +54,17 @@ util.parse = function(color) {
 	if (color === null) {
 		return hex;
 	}
-
-	// Already dealing with a Color
-	if (typeof color === 'object' && typeof color.toHex === 'function') {
-		hex = color.toHex();
+	// Already an RGB channel
+	else if (util.isRgbChannels(color)) {
+		return color;
 	}
+	// Already dealing with a Color
+	else if (typeof color === 'object' && util.isRgbChannels(color.channels)) {
+		return color.channels;
+	}
+
 	// Convert keyword to HEX
-	else if (util.isKeyword(color)) {
+	if (util.isKeyword(color)) {
 		hex = util.keyToHex(color);
 	}
 	// Convert RGB to HEX
@@ -328,6 +332,21 @@ util.keyToHex = function(key, array) {
 	}
 
 	return hex;
+};
+
+
+/**
+ * Determine if an Array represents parsed RGB channels
+ * @param {Array} channels The Array to be tested
+ * @returns {boolean} True if the array is RGB channels, otherwise false
+ */
+util.isRgbChannels = function (channels) {
+	return typeof channels === 'object' &&
+		channels.constructor === Array &&
+		channels.length === 3 &&
+		!isNaN(channels[0]) && channels[0] >= 0 && channels[0] <= 255 &&
+		!isNaN(channels[1]) && channels[1] >= 0 && channels[1] <= 255 &&
+		!isNaN(channels[2]) && channels[2] >= 0 && channels[2] <= 255;
 };
 
 /**

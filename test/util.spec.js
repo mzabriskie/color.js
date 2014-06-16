@@ -10,7 +10,8 @@ module.exports = {
 
 	testParse: function (test) {
 		test.equal(util.parse(null), null);
-		test.deepEqual(util.parse({toHex: function () { return '#f00'; }}), [255, 0, 0]);
+		test.deepEqual(util.parse({channels: [255, 0, 0]}), [255, 0, 0]);
+		test.deepEqual(util.parse({channels: ['255', '0', '0']}), [255, 0, 0]);
 		test.deepEqual(util.parse('red'), [255, 0, 0]);
 		test.deepEqual(util.parse('rgb(255, 0, 0)'), [255, 0, 0]);
 		test.deepEqual(util.parse('hsl(0, 100%, 50%)'), [255, 0, 0]);
@@ -98,6 +99,16 @@ module.exports = {
 		test.equal(util.keyToHex('foo'), null);
 		test.equal(util.keyToHex('red'), '#ff0000');
 		test.deepEqual(util.keyToHex('red', true), ['ff', '00', '00']);
+
+		test.done();
+	},
+
+	testIsRgbChannels: function (test) {
+		test.ok(util.isRgbChannels([255, 0, 0]));
+		test.ok(util.isRgbChannels(['255', '0', '0']));
+		test.ok(!util.isRgbChannels([256, 0, 0]));
+		test.ok(!util.isRgbChannels([255, -1, 0]));
+		test.ok(!util.isRgbChannels([255, 0]));
 
 		test.done();
 	},

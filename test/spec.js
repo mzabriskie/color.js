@@ -6,6 +6,7 @@ module.exports = {
         test.deepEqual(new Color('#ff0000').channels, [255, 0, 0], 'Construct using hex');
         test.deepEqual(new Color('hsl(0, 100%, 50%)').channels, [255, 0, 0], 'Construct using hsl');
         test.deepEqual(new Color('rgb(255, 0, 0)').channels, [255, 0, 0], 'Construct using rgb');
+		test.deepEqual(new Color(Color.parse('red')).channels, [255, 0, 0], 'Construct using Array');
         test.equal(new Color('foo').channels, null, 'Construct using foo');
 
         test.done();
