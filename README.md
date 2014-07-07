@@ -65,6 +65,9 @@ Determine if a color is represented using HTML keyword
 #### Color.median(color1, color2)
 Get the median value of two colors
 
+#### Color.random()
+Creates a random color
+
 #### Color.parse(color)
 Parse any valid color to an `Array` of RGB channels
 

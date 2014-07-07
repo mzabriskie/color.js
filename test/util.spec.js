@@ -151,5 +151,11 @@ module.exports = {
 		test.equal(util.median('purple', 'green'), '#404040');
 
 		test.done();
+	},
+
+	testRandom: function (test) {
+		test.equal(util.isHex(util.random()), true);
+
+		test.done();
 	}
 };

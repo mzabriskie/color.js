@@ -58,6 +58,7 @@ Color.isHsl = util.isHsl;
 Color.isHex = util.isHex;
 Color.isKeyword = util.isKeyword;
 Color.median = util.median;
+Color.random = util.random;
 Color.parse = util.parse;
 
 module.exports = Color;

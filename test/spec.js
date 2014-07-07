@@ -75,6 +75,12 @@ module.exports = {
         test.done();
     },
 
+	testRandom: function (test) {
+		test.equal(Color.isHex(Color.random()), true, 'Creating random color');
+
+		test.done();
+	},
+
     testParse: function (test) {
         test.deepEqual(Color.parse('#ff0000'), ['255', '0', '0'], 'Parsing hex');
         test.deepEqual(Color.parse('hsl(0, 100%, 50%)'), ['255', '0', '0'], 'Parsing hsl');

@@ -408,4 +408,17 @@ util.median = function (color1, color2) {
 	return med;
 };
 
+/**
+ * Creates a random color
+ *
+ * @returns {String} A random HEX color
+ */
+util.random = function () {
+	var r = Math.floor(Math.random() * 256),
+		g = Math.floor(Math.random() * 256),
+		b = Math.floor(Math.random() * 256);
+
+	return util.rgbToHex('rgb(' + r + ', ' + g + ', ' + b + ')');
+};
+
 module.exports = util;
